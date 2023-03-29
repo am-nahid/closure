@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+
+
+
+      <h1>Q1.</h1>
+    <pre>
+        function counter(){
+    var counter = 0;
+
+    function IncreaseCounter() {
+        return counter += 1;
+    };
+
+    return IncreaseCounter;
+    }
+
+    var counter = counter();
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    alert(counter());
+
+    </pre>
+    <p>o/p=> alert will pop up 4 times having value 1 2 3 4.
+        as the counter increaments by 1 on every alert</p>
+
+    <hr>
+
+      <h1>Q2.</h1>
+    <pre>
+        let count = 0;
+     (function () {
+       if (count === 0) {
+    let count = 1;
+    console.log(count); // What is logged?
+       }
+       console.log(count); // What is logged?
+    })();
+    </pre>
+    <p>o/p => 1 0 within if statement there is count value as 1 so it executes 1.
+        the second console takes value from global scope</p>
+
+    <hr>
+
+      <h1>Q3.</h1>
+    <pre>
+        for (var i = 0; i < 3; i++) {
+            setTimeout(function log() {
+              console.log(i); // What is logged?
+            }, 0);
+          }
+          
+    </pre>
+    <p>  o/p => 3 3 3 <br>
+        the for loop keeps on iterating but the settimeout value value will give the
+        outout after 1 sec so when that happens the latest value of i becomes 3 and that 3 is executes 3 times based on iterations of for loop.</p>
+
+    <hr>
+
+      <h1>Q4. Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter bredth.
+    </h1>
+    <pre>
+        
+   function length(l) {
+    function breadth(b){
+        console.log(l*b);
+    }
+    breadth(5);
+   }
+   length(10);
+    </pre>
+    
+
+    <hr>
+
+      <h1> Q5. Take a variable in outer function and create an inner function to increase the counter every time it is called
+    </h1>
+    <pre>
+        function initial() {
+          var a = 0;
+          function Num() {
+              return a=a+3;
+          };
+          return Num;
+      }
+      var initial = initial()
+      console.log(initial());
+      console.log(initial());
+      console.log(initial());
+      console.log(initial());</pre>
+    
+
+    <hr>
+
+      <h1>Q6. Print Output</h1>
+    <pre>var a = 12;
+        (function () {
+          alert(a);
+        })();</pre>
+    <p>o/p => 12 displaying on alert popup</p>
+
+
+    <hr>
+
+      <h1>Q7.</h1>
+    <pre>var a = 10;
+        var x = (function () {
+          var a = 12;
+          return function () {
+            alert(a);
+          };
+        })();
+        x();</pre>
+        <p>o/p => 12 displaying on alert popup</p>
+    
+    <hr>
+
+
+      <h1>Q8.</h1>
+    <pre>var globalVar = "xyz";
+        (function outerFunc(outerArg) {
+            var outerVar = 'a';
+            
+            (function innerFunc(innerArg) {
+            var innerVar = 'b';
+            
+            console.log(
+                "outerArg = " + outerArg + "\n" +
+                "innerArg = " + innerArg + "\n" +
+                "outerVar = " + outerVar + "\n" +
+                "innerVar = " + innerVar + "\n" +
+                "globalVar = " + globalVar);
+            
+            })(456);
+        })(123);</pre>
+    <p>o/p =>
+
+        outerArg = 123 <br>
+        innerArg = 456 <br>
+        outervar = a<br>
+        innerVar = b<br>
+        globalBar = xyz</p>
+
+</body>
+</html>
